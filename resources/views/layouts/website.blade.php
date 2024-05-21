@@ -26,6 +26,8 @@
     <!-- Bootstrap Select CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('website/vendor/bootstrap-select/css/bootstrap-select.min.css') }}"/>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css">
+
     <!-- Currency Flags CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('website/vendor/currency-flags/css/currency-flags.min.css') }}"/>
 
@@ -34,6 +36,7 @@
 
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" type="text/css" href="{{ asset('website/css/stylesheet.css') }}"/>
+
 
     @livewireStyles
 </head>
@@ -186,6 +189,15 @@
 <script src="{{ asset('website/vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
 <script src="{{ asset('website/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('website/js/theme.js') }}"></script>
+
+<!-- Add these at the end of your body -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.selectpicker').selectpicker();
+    });
+</script>
 
 @livewireScripts
 </body>
