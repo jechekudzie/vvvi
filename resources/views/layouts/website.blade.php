@@ -4,8 +4,8 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
-    <link href="images/favicon.png" rel="icon"/>
-    <title>VVIT ltd</title>
+    <link href="{{ asset('website/images/VVVI logo final-01.jpg') }}" rel="icon"/>
+    <title>VVVI ltd</title>
     <meta name="description"
           content="VVVI is an international remittance and money transfer service aimed at streamlining and improving how Zimbabweans in the diaspora, especially those in the UK, send money to Zimbabwe and beyond. Our service extends to facilitating local money transfers within Zimbabwe, as well as to South Africa and Botswana, through various payment methods.">
     <meta name="author" content="harnishdesign.net">
@@ -77,7 +77,7 @@
                     <nav class="primary-menu navbar navbar-expand-lg">
                         <div id="header-nav" class="collapse navbar-collapse">
                             <ul class="navbar-nav me-auto">
-                                <li><a href="about-us.html">About Us</a></li>
+                                <li><a href="#">About Us</a></li>
                                 <li class="active"><a href="#">Send</a></li>
                                 <li><a href="#">Receive</a></li>
                                 <li><a href="#">Fees</a></li>
@@ -141,7 +141,7 @@
             <div class="footer-copyright pt-3 pt-lg-2 mt-2">
                 <div class="row">
                     <div class="col-lg">
-                        <p class="text-center text-lg-start mb-2 mb-lg-0">Copyright &copy; 2022 <a href="#">VVVI ltd</a>.
+                        <p class="text-center text-lg-start mb-2 mb-lg-0">Copyright &copy; {{date('Y')}} <a href="#">VVVI ltd</a>.
                             All Rights Reserved.</p>
                     </div>
                     <div class="col-lg d-lg-flex align-items-center justify-content-lg-end">

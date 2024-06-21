@@ -2,15 +2,30 @@
 
 use App\Http\Controllers\ExchangeRatesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriptionController;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\SendMoney;
+use GuzzleHttp\Client;
+
 Route::get('/', function () {
-    return view('welcome');
+    // Retrieve the country codes
+
+    $countryCodes = Cache::get('country_codes', []);
+
+    return view('welcome',compact('countryCodes'));
+
 })->name('website.home');
 
 Route::get('/exchange-rates', [ExchangeRatesController::class, 'index'])->name('exchange-rates.index');
 
 Route::get('/send-money', SendMoney::class);
+
+//subscription routes post
+Route::get('/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');
+Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');
+//cache country codes
+Route::get('/fetch-and-cache-country-codes', [SubscriptionController::class, 'fetchAndCacheCountryCodes'])->name('fetch-and-cache-country-codes');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

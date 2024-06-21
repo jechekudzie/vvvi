@@ -30,20 +30,24 @@ class SendMoney extends Component
 
     public function fetchExchangeRate()
     {
-        $apiKey = env('EXCHANGE_RATES_API_KEY');
+        //$apiKey = env('EXCHANGE_RATES_API_KEY');
+        $apiKey = '589b1412f7234bb54f6212cd2e19e2d3';
         $url = "http://api.exchangeratesapi.io/v1/latest?access_key={$apiKey}&base={$this->youSendCurrency}&symbols={$this->recipientCurrency}";
 
-        // Initialize chargePercentage (e.g., 5% fee)
-        $this->chargePercentage = 0.05;
+        // Initialize chargePercentage (e.g., 3% fee)
+        $this->chargePercentage = 0.03;
 
         try {
             $response = Http::get($url);
             // Uncomment for debugging if needed
             $data = $response->json();
 
+
             if (isset($data['rates'][$this->recipientCurrency])) {
                 $this->exchangeRate = $data['rates'][$this->recipientCurrency];
-                $this->recipientGets = $this->youSend * $this->exchangeRate;
+
+                // Calculate recipientGets and 2 decimal places
+                $this->recipientGets = number_format($this->youSend * $this->exchangeRate,2);
 
                 // Calculate feeCharge
                 $this->feeCharge = $this->youSend * $this->chargePercentage;

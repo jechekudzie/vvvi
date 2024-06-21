@@ -1,21 +1,39 @@
 <div class="col-lg-6 col-xl-5 my-auto">
+    <!-- Special Offer end -->
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    @if($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul class="mb-0">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="bg-white rounded shadow-md p-4">
-        <h3 class="text-5 mb-4 text-center">Send Money</h3>
+        <h3 class="text-5 mb-4 text-center">Today’s Exchange Rate</h3>
         <hr class="mb-4 mx-n4">
 
         <form wire:submit.prevent="fetchExchangeRate">
             <div class="mb-3">
-                <label for="youSend" class="form-label">You Send</label>
+                <label for="youSend" class="form-label">You Send - Enter Amount below</label>
                 <div class="input-group">
-                    <span class="input-group-text">$</span>
+                    {{--<span class="input-group-text">$</span>--}}
                     <input type="text" class="form-control" id="youSend" wire:model.lazy="youSend">
                     <span class="input-group-text p-0">
                 <select id="youSendCurrency" wire:model.lazy="youSendCurrency"
                         class="form-control bg-transparent border-0" data-style="form-select bg-transparent border-0" data-container="body" data-live-search="true" required="">
                     <optgroup label="Popular Currency">
-                        <option value="USD" class="currency-flag currency-flag-usd">USD</option>
+                         <option value="USD" class="currency-flag currency-flag-usd">USD</option>
+                        <option value="EUR" class="currency-flag currency-flag-eur">EUR</option>
+                        <option value="GBP" class="currency-flag currency-flag-gbp">GBP</option>
                         <option value="AUD" class="currency-flag currency-flag-aud">AUD</option>
-                        <option value="INR" class="currency-flag currency-flag-inr">INR</option>
                     </optgroup>
                     <option data-divider="true"></option>
                     <optgroup label="Other Currency">
@@ -73,15 +91,16 @@
             <div class="mb-3">
                 <label for="recipientGets" class="form-label">Recipient Gets</label>
                 <div class="input-group">
-                    <span class="input-group-text">$</span>
+                    {{--<span class="input-group-text">$</span>--}}
                     <input type="text" class="form-control" id="recipientGets" wire:model="recipientGets" readonly>
                     <span class="input-group-text p-0">
                 <select id="recipientCurrency" wire:model.lazy="recipientCurrency"
                         class="form-control bg-transparent border-0" data-style="form-select bg-transparent border-0" data-container="body" data-live-search="true" required="">
                     <optgroup label="Popular Currency">
                         <option value="USD" class="currency-flag currency-flag-usd">USD</option>
+                        <option value="EUR" class="currency-flag currency-flag-eur">EUR</option>
+                        <option value="GBP" class="currency-flag currency-flag-gbp">GBP</option>
                         <option value="AUD" class="currency-flag currency-flag-aud">AUD</option>
-                        <option value="INR" class="currency-flag currency-flag-inr">INR</option>
                     </optgroup>
                     <option data-divider="true"></option>
                     <optgroup label="Other Currency">
@@ -136,12 +155,12 @@
             </span>
                 </div>
             </div>
-            <p class="text-muted mb-1">Fee Charge: <span class="fw-500">{{ $feeCharge }} {{ $youSendCurrency }}</span></p>
-            <p class="text-muted mb-1">Total fees: <span class="fw-500">{{ $totalFees }} {{ $youSendCurrency }}</span></p>
+           {{-- <p class="text-muted mb-1">Fee Charge: <span class="fw-500">{{ $feeCharge }} {{ $youSendCurrency }}</span></p>
+            <p class="text-muted mb-1">Total fees: <span class="fw-500">{{ $totalFees }} {{ $youSendCurrency }}</span></p>--}}
             <p class="text-muted">The current exchange rate is <span class="fw-500">1 {{ $youSendCurrency }} = {{ $exchangeRate }} {{ $recipientCurrency }}</span></p>
-            <div class="d-grid">
+            {{--<div class="d-grid">
                 <button class="btn btn-primary" type="submit">Continue</button>
-            </div>
+            </div>--}}
         </form>
 
     </div>
